@@ -6,3 +6,19 @@ Employee attrition (turnover) is one of the most costly challenges for any organ
 
 Dataset: **IBM HR Analytics Employee Attrition & Performance** (Kaggle)
 Records: **1,470 employees** | **35 attributes**
+
+---
+
+## ❓ Business Questions
+
+| # | Question | SQL Technique |
+|---|---|---|
+| 1 | Which department has the highest attrition rate? | GROUP BY, CASE WHEN |
+| 2 | Does salary correlate with employee resignation? | Subquery, AVG |
+| 3 | Do employees with overtime tend to resign more? | GROUP BY, CASE WHEN |
+| 4 | What is the average tenure per department? | AVG, GROUP BY |
+| 5 | Who are the top performers in each department? | Window Function, RANK() |
+| 6 | What is the salary distribution by job level? | CTE, GROUP BY |
+| 7 | Which factors most distinguish employees who stay vs resign? | Multi-condition WHERE, JOIN |
+
+---
