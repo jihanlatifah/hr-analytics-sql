@@ -22,3 +22,38 @@ Records: **1,470 employees** | **35 attributes**
 | 7 | Which factors most distinguish employees who stay vs resign? | Multi-condition WHERE, JOIN |
 
 ---
+## 📁 Project Structure
+
+```
+hr-analytics-sql/
+│
+├── README.md
+├── queries/
+│   ├── 01_basic_exploration.sql       # Data overview & sanity checks
+│   ├── 02_attrition_analysis.sql      # Attrition by dept, overtime, salary
+│   ├── 03_salary_performance.sql      # Salary distribution & top performers
+│   └── 04_advanced_cte_window.sql     # CTE & window functions
+└── results/
+    └── screenshots/                   # Query result screenshots
+```
+
+---
+
+## 📂 Dataset
+
+| Detail | Info |
+|---|---|
+| Source | [IBM HR Analytics — Kaggle](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset) |
+| Records | 1,470 employees |
+| Key Columns | Attrition, Department, MonthlyIncome, OverTime, YearsAtCompany, PerformanceRating, JobLevel |
+| License | Public / Open |
+
+---
+
+## 🛠️ Tools
+
+- **SQLite** / **PostgreSQL** — query execution
+- **DB Browser for SQLite** / **DBeaver** — GUI interface
+- **Python (pandas)** — initial data import & validation
+
+---
