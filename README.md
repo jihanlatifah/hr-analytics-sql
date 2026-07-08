@@ -58,11 +58,12 @@ hr-analytics-sql/
 
 ---
 
-📊 Analysis & Key Findings
+## 📊 Analysis & Key Findings
 
-1. Attrition Rate by Department
+### 1. Attrition Rate by Department
 
-sqlSELECT 
+```sql
+SELECT 
   Department,
   COUNT(*) AS total_employees,
   SUM(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) AS resigned,
@@ -72,18 +73,18 @@ sqlSELECT
 FROM employees
 GROUP BY Department
 ORDER BY attrition_rate_pct DESC;
+```
 
+> 📸 *[Screenshot hasil query — tambahkan setelah dijalankan]*
 
-📸 [Screenshot hasil query — tambahkan setelah dijalankan]
+**Insight:** *(Isi setelah analisis selesai — contoh: "Sales department has the highest attrition rate at X%, nearly 2x higher than Research & Development")*
 
+---
 
+### 2. Overtime vs Attrition
 
-Insight: (Isi setelah analisis selesai — contoh: "Sales department has the highest attrition rate at X%, nearly 2x higher than Research & Development")
-
-
-2. Overtime vs Attrition
-
-sqlSELECT 
+```sql
+SELECT 
   OverTime,
   COUNT(*) AS total,
   SUM(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) AS resigned,
@@ -92,18 +93,18 @@ sqlSELECT
   ) AS resign_rate_pct
 FROM employees
 GROUP BY OverTime;
+```
 
+> 📸 *[Screenshot hasil query — tambahkan setelah dijalankan]*
 
-📸 [Screenshot hasil query — tambahkan setelah dijalankan]
+**Insight:** *(Isi setelah analisis selesai)*
 
+---
 
+### 3. Employees Earning Above Average Who Still Resigned
 
-Insight: (Isi setelah analisis selesai)
-
-
-3. Employees Earning Above Average Who Still Resigned
-
-sqlSELECT 
+```sql
+SELECT 
   EmployeeNumber, 
   Department, 
   JobRole,
@@ -113,18 +114,18 @@ FROM employees
 WHERE Attrition = 'Yes'
   AND MonthlyIncome > (SELECT AVG(MonthlyIncome) FROM employees)
 ORDER BY MonthlyIncome DESC;
+```
 
+> 📸 *[Screenshot hasil query — tambahkan setelah dijalankan]*
 
-📸 [Screenshot hasil query — tambahkan setelah dijalankan]
+**Insight:** *(Isi setelah analisis selesai — menunjukkan salary bukan satu-satunya faktor retensi)*
 
+---
 
+### 4. Top 3 Highest-Paid Employees per Department
 
-Insight: (Isi setelah analisis selesai — menunjukkan salary bukan satu-satunya faktor retensi)
-
-
-4. Top 3 Highest-Paid Employees per Department
-
-sqlWITH salary_ranked AS (
+```sql
+WITH salary_ranked AS (
   SELECT 
     EmployeeNumber,
     Department,
@@ -138,16 +139,16 @@ sqlWITH salary_ranked AS (
 )
 SELECT * FROM salary_ranked
 WHERE salary_rank <= 3;
+```
 
+> 📸 *[Screenshot hasil query — tambahkan setelah dijalankan]*
 
-📸 [Screenshot hasil query — tambahkan setelah dijalankan]
+---
 
+### 5. Department Summary: Salary, Tenure & Performance
 
-
-
-5. Department Summary: Salary, Tenure & Performance
-
-sqlSELECT 
+```sql
+SELECT 
   Department,
   COUNT(*) AS total_employees,
   ROUND(AVG(MonthlyIncome), 0) AS avg_salary,
@@ -159,22 +160,7 @@ sqlSELECT
 FROM employees
 GROUP BY Department
 ORDER BY avg_salary DESC;
+```
 
 
-📸 [Screenshot hasil query — tambahkan setelah dijalankan]
-
-
-
-Insight: (Isi setelah analisis selesai)
-
-
-💡 Key Insights Summary
-
-
-
-
-Highest attrition department: ...
-Overtime impact: Employees with overtime are X% more likely to resign
-Salary is not everything: X employees above average salary still resigned
-Tenure pattern: Department X has the longest average tenure at X years
 Top performer distribution: ...
